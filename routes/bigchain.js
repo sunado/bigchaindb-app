@@ -8,7 +8,7 @@ const sampleJson = {
 };
 router.post('/create', function (req,res) {
     console.log("Create transaction ",req.body)
-    controller.pushData(sampleJson, function (retrievedTx) {
+    controller.pushData(req.body, function (retrievedTx) {
         console.log("Create transition id: ",retrievedTx.id);
         res.json(retrievedTx.id);
     });
