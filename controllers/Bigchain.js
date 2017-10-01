@@ -40,3 +40,16 @@ exports.listOutputs = function (publickey,spent,next) {
     conn.listOutputs(publickey,spent)
         .then(json => next(json))
 };
+
+exports.listScore = function (name ,next) {
+    conn.searchAssets(name)
+        .then(json => {
+            let output = [];
+            for (var i=0 ; i< json.length; i++) {
+                var data = json[i];
+                console.log(i,data.data);
+                output.push(data.data);
+            }
+            next(output)
+        })
+};
